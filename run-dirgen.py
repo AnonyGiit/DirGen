@@ -1935,15 +1935,23 @@ count_diff = 0
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--no-var-selection", action="store_false", dest="var_selection",
-                    help="Disable variable selection optimization in getBinaries (default: enabled)")
-    parser.add_argument("--no-marker-reduction", action="store_false", dest="marker_reduction",
-                    help="Disable marker reduction optimization in testMain (default: enabled)")
-    parser.add_argument("--no-se", action="store_false", dest="perform_se",
-                    help="Disable symbolic execution (default: disabled)")
+    parser.add_argument("--var-selection", action="store_false", dest="var_selection",
+                        help="Enable the variable selection optimization used in getBinaries (default: enabled)")
+
+    parser.add_argument("--marker-reduction", action="store_false", dest="marker_reduction",
+                        help="Enable the marker reduction optimization used in testMain (default: enabled)")
+
+    parser.add_argument("--gen-mode", choices=["se", "random", "hybrid"], default="hybrid",
+                        help="Enable different modes for directed test case generation: se, random, or hybrid (default: hybrid)")
+
     parser.add_argument("--num-tests", type=int, default=100,
-                    help="Number of test iterations to run (default: 100000)")
-    parser.set_defaults(var_selection=True, marker_reduction=True, perform_se=True)
+                        help="Number of test iterations to run (default: 100)")
+
+    parser.set_defaults(
+        var_selection=True,
+        marker_reduction=True,
+        gen_mode="hybrid"
+    )
     args = parser.parse_args()
 
     print("### Test main ###")
@@ -1967,7 +1975,6 @@ if __name__ == "__main__":
         binaries = getBinaries(10, 8, "", 200, s, cmd_list, args.var_selection)
         print("Analyzing binaries ...")
         testMain(binaries, args.marker_reduction, args.perform_se)
-        os.system("rm -rf ./testdbs/*")
         print(f"############### No.{i} count_var_org = {count_var_org}, count_var_reduced = {count_var_reduced}; count_diff = {count_diff}; count_org_marker = {count_markers_org}; count_reduced_marker = {count_markers_reduced}; count_se = {count_se}")
     log_to_excel(
     "log_overall_results.xlsx", i+1,

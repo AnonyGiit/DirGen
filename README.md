@@ -44,17 +44,17 @@ git clone https://github.com/AnonyGiit/DirGen
 
 This script supports the following command-line options:
 
-- `--no-var-selection`  
+- `--var-selection`  
   **Description:** Disables the variable selection optimization used in the `getBinaries` step.  
-  **Default Behavior:** Variable selection optimization is **enabled** unless this flag is passed.  
+  **Default Behavior:** Variable selection optimization is **enabled** by default.  
 
-- `--no-marker-reduction`  
+- `--marker-reduction`  
   **Description:** Disables the marker reduction optimization used in the `testMain` step.  
-  **Default Behavior:** Marker reduction is **enabled** unless this flag is passed.  
+  **Default Behavior:** Marker reduction is **enabled** by default.  
 
-- `--no-se`  
-  **Description:** Disables symbolic execution.  
-  **Default Behavior:** Symbolic execution is **enabled** unless this flag is passed.  
+- `--gen-mode`  
+  **Description:** Enable different modes for directed test case generation: `se`, `random`, or `hybrid`.  
+  **Default Behavior:** `hybrid` is used by default.  
 
 - `--num-tests <int>`  
   **Description:** Sets the number of test iterations to run.  
@@ -67,7 +67,7 @@ By default, the following options are set:
 parser.set_defaults(
     var_selection=True,
     marker_reduction=True,
-    perform_se=True
+    gen_mode=hybrid
 )
 ```
 ## Usage

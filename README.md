@@ -1,4 +1,4 @@
-# DirGen is a tool implemented in the paper **When Dead Code Elimination Goes Wrong: Directed Test Case Generation for Detecting Erroneous Live Code Deletion** (under review).
+# DirGen is a tool implemented in the paper `When Dead Code Elimination Goes Wrong: Directed Test Case Generation for Detecting Erroneous Live Code Deletion` (under review).
 
 ## This repository includes two parts:
 
@@ -45,26 +45,19 @@ This script supports the following command-line options:
 - `--no-var-selection`  
   **Description:** Disables the variable selection optimization used in the `getBinaries` step.  
   **Default Behavior:** Variable selection optimization is **enabled** unless this flag is passed.  
-  **Type:** Flag (no value needed)  
-  **Internal Variable:** `var_selection = False` when passed
 
 - `--no-marker-reduction`  
   **Description:** Disables the marker reduction optimization used in the `testMain` step.  
   **Default Behavior:** Marker reduction is **enabled** unless this flag is passed.  
-  **Type:** Flag  
-  **Internal Variable:** `marker_reduction = False` when passed
 
 - `--no-se`  
   **Description:** Disables symbolic execution.  
   **Default Behavior:** Symbolic execution is **enabled** unless this flag is passed.  
-  **Type:** Flag  
-  **Internal Variable:** `perform_se = False` when passed
 
 - `--num-tests <int>`  
   **Description:** Sets the number of test iterations to run.  
   **Default Value:** 100  
-  **Type:** Integer  
-  **Usage Example:** `--num-tests 500`
+
 
 ### Defaults
 By default, the following options are set:

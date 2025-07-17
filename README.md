@@ -1,4 +1,6 @@
-# DirGen is a tool implemented in the paper `When Dead Code Elimination Goes Wrong: Directed Test Case Generation for Detecting Erroneous Live Code Deletion` (under review).
+# About
+
+`DirGen` is a tool implemented in the paper **When Dead Code Elimination Goes Wrong: Directed Test Case Generation for Detecting Erroneous Live Code Deletion** (under review).
 
 ## This repository includes two parts:
 
